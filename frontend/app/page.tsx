@@ -2,13 +2,41 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Activity, BellRing, MapPin, Volume2 } from 'lucide-react';
+import { Activity, BellRing, MapPin, TrendingUp, Volume2, Wifi } from 'lucide-react';
 import { format } from 'date-fns';
 
-// Dynamically import Map to prevent SSR errors with Leaflet
-const MapComponent = dynamic(() => import('@/components/Map'), { 
+const MapComponent = dynamic(() => import('@/components/Map'), {
   ssr: false,
-  loading: () => <div className="h-full w-full flex items-center justify-center bg-slate-900 rounded-2xl animate-pulse text-slate-400">Loading Map...</div>
+  loading: () => (
+    <div
+      style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'var(--bg-elevated)',
+        borderRadius: 12,
+        color: 'var(--text-muted)',
+        fontSize: 13,
+      }}
+    >
+      <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            border: '2px solid var(--border)',
+            borderTopColor: '#3b82f6',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite',
+            margin: '0 auto 10px',
+          }}
+        />
+        Loading map…
+      </div>
+    </div>
+  ),
 });
 
 type TelemetryData = {
@@ -19,11 +47,81 @@ type TelemetryData = {
   lng: number;
 };
 
+const LEVEL_CONFIG: Record<
+  string,
+  { color: string; bg: string; border: string; dot: string }
+> = {
+  Quiet:      { color: '#22c55e', bg: 'rgba(34,197,94,0.08)',  border: 'rgba(34,197,94,0.2)',  dot: '#22c55e' },
+  Moderate:   { color: '#eab308', bg: 'rgba(234,179,8,0.08)',  border: 'rgba(234,179,8,0.2)',  dot: '#eab308' },
+  Loud:       { color: '#f97316', bg: 'rgba(249,115,22,0.08)', border: 'rgba(249,115,22,0.2)', dot: '#f97316' },
+  'Very Loud': { color: '#ef4444', bg: 'rgba(239,68,68,0.08)', border: 'rgba(239,68,68,0.2)',  dot: '#ef4444' },
+  Hazardous:  { color: '#f87171', bg: 'rgba(248,113,113,0.15)',border: 'rgba(248,113,113,0.3)',dot: '#f87171' },
+};
+
+const getLevelCfg = (level: string) =>
+  LEVEL_CONFIG[level] ?? { color: '#7a8494', bg: 'rgba(122,132,148,0.08)', border: 'rgba(122,132,148,0.2)', dot: '#7a8494' };
+
+function StatCard({
+  label,
+  value,
+  sub,
+  icon: Icon,
+  accent,
+}: {
+  label: string;
+  value: string | number;
+  sub?: string;
+  icon: React.ElementType;
+  accent: string;
+}) {
+  return (
+    <div
+      style={{
+        background: 'var(--bg-surface)',
+        border: '1px solid var(--border)',
+        borderRadius: 12,
+        padding: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        transition: 'border-color 0.2s',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>
+          {label}
+        </span>
+        <div
+          style={{
+            width: 28,
+            height: 28,
+            borderRadius: 7,
+            background: `${accent}18`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Icon size={14} color={accent} />
+        </div>
+      </div>
+      <div>
+        <div style={{ fontSize: 26, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+          {value}
+        </div>
+        {sub && (
+          <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 4 }}>{sub}</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const [data, setData] = useState<TelemetryData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [connected, setConnected] = useState(false);
 
-  // Poll API every 1 second
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,8 +129,10 @@ export default function Dashboard() {
         const json = await res.json();
         setData(json);
         setLoading(false);
+        setConnected(true);
       } catch (err) {
-        console.error("Failed to fetch telemetry data", err);
+        console.error('Failed to fetch telemetry data', err);
+        setConnected(false);
       }
     };
 
@@ -42,104 +142,303 @@ export default function Dashboard() {
   }, []);
 
   const latest = data.length > 0 ? data[0] : null;
+  const isAlarm = latest
+    ? ['Loud', 'Very Loud', 'Hazardous'].includes(latest.noiseLevel)
+    : false;
 
-  const isAlarm = latest ? ["Loud", "Very Loud", "Hazardous"].includes(latest.noiseLevel) : false;
+  const alarmCount = data.filter((d) =>
+    ['Loud', 'Very Loud', 'Hazardous'].includes(d.noiseLevel)
+  ).length;
+
+  const avgLevel =
+    data.length > 0
+      ? Math.round(data.slice(0, 20).reduce((s, d) => s + d.analogLevel, 0) / Math.min(data.length, 20))
+      : 0;
+
+  const levelCfg = latest ? getLevelCfg(latest.noiseLevel) : getLevelCfg('');
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 font-sans">
-      <header className="mb-8 flex items-center justify-between border-b border-slate-800 pb-4">
+    <div
+      style={{
+        minHeight: '100vh',
+        padding: '28px 32px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px',
+      }}
+    >
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
-          <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500 flex items-center gap-3">
-            <Activity className="text-emerald-400" size={32} />
-            IoT Noise Monitor
+          <h1
+            style={{
+              fontSize: 20,
+              fontWeight: 600,
+              color: 'var(--text-primary)',
+              letterSpacing: '-0.02em',
+              marginBottom: 4,
+            }}
+          >
+            Live Dashboard
           </h1>
-          <p className="text-slate-400 mt-1">Live telemetry dashboard for ESP8266</p>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            Real-time noise telemetry · ESP8266
+          </p>
         </div>
-        
-        {isAlarm && (
-          <div className="flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full border border-red-500/30 animate-pulse font-semibold shadow-[0_0_15px_rgba(239,68,68,0.3)]">
-            <BellRing size={20} />
-            HIGH NOISE ALARM DETECTED
-          </div>
-        )}
-      </header>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Stats & Table */}
-        <div className="lg:col-span-1 space-y-6">
-          {/* Current Status Card */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-               <Volume2 size={100} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {isAlarm && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: 'rgba(239,68,68,0.1)',
+                border: '1px solid rgba(239,68,68,0.25)',
+                borderRadius: 8,
+                padding: '6px 12px',
+                fontSize: 12,
+                fontWeight: 600,
+                color: '#ef4444',
+                animation: 'pulse 2s ease-in-out infinite',
+              }}
+            >
+              <BellRing size={13} />
+              HIGH NOISE ALARM
             </div>
-            
-            <h2 className="text-slate-400 font-medium uppercase tracking-wider text-sm mb-4">Current Reading</h2>
-            
+          )}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              background: connected ? 'rgba(34,197,94,0.08)' : 'rgba(239,68,68,0.08)',
+              border: `1px solid ${connected ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'}`,
+              borderRadius: 8,
+              padding: '6px 12px',
+              fontSize: 12,
+              fontWeight: 500,
+              color: connected ? '#22c55e' : '#ef4444',
+            }}
+          >
+            <Wifi size={13} />
+            {connected ? 'Live' : 'Disconnected'}
+          </div>
+        </div>
+      </div>
+
+      {/* Stat cards row */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <StatCard
+          label="Current Level"
+          value={loading ? '—' : (latest?.analogLevel ?? '—')}
+          sub={latest?.noiseLevel ?? 'No data'}
+          icon={Volume2}
+          accent="#3b82f6"
+        />
+        <StatCard
+          label="Avg (last 20)"
+          value={loading ? '—' : avgLevel}
+          sub="amplitude reading"
+          icon={TrendingUp}
+          accent="#8b5cf6"
+        />
+        <StatCard
+          label="Alarm Events"
+          value={loading ? '—' : alarmCount}
+          sub="of last 100 readings"
+          icon={BellRing}
+          accent="#ef4444"
+        />
+      </div>
+
+      {/* Main grid: status + table | map */}
+      <div style={{ display: 'grid', gridTemplateColumns: '340px 1fr', gap: '16px', flex: 1 }}>
+        {/* Left column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {/* Current status card */}
+          <div
+            style={{
+              background: 'var(--bg-surface)',
+              border: '1px solid var(--border)',
+              borderRadius: 12,
+              padding: '20px',
+            }}
+          >
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                color: 'var(--text-muted)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.07em',
+                marginBottom: '16px',
+              }}
+            >
+              Current Reading
+            </p>
+
             {loading ? (
-              <div className="animate-pulse h-20 bg-slate-800 rounded-lg"></div>
+              <div style={{ height: 80, background: 'var(--bg-elevated)', borderRadius: 8, animation: 'pulse 1.5s ease-in-out infinite' }} />
             ) : latest ? (
-              <div>
-                <div className="flex items-end gap-3 mb-2">
-                  <span className="text-6xl font-black text-white">{latest.analogLevel}</span>
-                  <span className="text-slate-400 pb-1 font-medium">Amplitude</span>
+              <>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '12px' }}>
+                  <span
+                    style={{
+                      fontSize: 52,
+                      fontWeight: 800,
+                      color: 'var(--text-primary)',
+                      letterSpacing: '-0.04em',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {latest.analogLevel}
+                  </span>
+                  <span style={{ fontSize: 13, color: 'var(--text-muted)', paddingBottom: 4 }}>amplitude</span>
                 </div>
-                <div className={`mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-bold
-                  ${latest.noiseLevel === 'Quiet' ? 'bg-emerald-500/20 text-emerald-400' :
-                    latest.noiseLevel === 'Moderate' ? 'bg-amber-500/20 text-amber-400' :
-                    latest.noiseLevel === 'Loud' ? 'bg-orange-500/20 text-orange-400' :
-                    'bg-red-500/20 text-red-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]'
-                  }
-                `}>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    background: levelCfg.bg,
+                    border: `1px solid ${levelCfg.border}`,
+                    borderRadius: 6,
+                    padding: '5px 10px',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: levelCfg.color,
+                    marginBottom: '14px',
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: '50%',
+                      background: levelCfg.dot,
+                      flexShrink: 0,
+                    }}
+                  />
                   {latest.noiseLevel.toUpperCase()}
                 </div>
-                <div className="mt-4 text-xs text-slate-500 flex items-center gap-2">
-                  <MapPin size={14} /> 
-                  Location: {latest.lat.toFixed(4)}, {latest.lng.toFixed(4)}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: 11, color: 'var(--text-muted)' }}>
+                  <MapPin size={11} />
+                  {latest.lat.toFixed(4)}, {latest.lng.toFixed(4)}
                 </div>
-              </div>
+              </>
             ) : (
-              <p className="text-slate-500 italic">Awaiting data...</p>
+              <p style={{ fontSize: 13, color: 'var(--text-muted)', fontStyle: 'italic' }}>Awaiting data…</p>
             )}
           </div>
 
-          {/* Alarm / History Table */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex-1 flex flex-col h-[500px]">
-            <h2 className="text-slate-400 font-medium uppercase tracking-wider text-sm mb-4">Recent Telemetry</h2>
-            
-            <div className="overflow-y-auto pr-2 custom-scrollbar flex-1">
+          {/* Recent telemetry table */}
+          <div
+            style={{
+              background: 'var(--bg-surface)',
+              border: '1px solid var(--border)',
+              borderRadius: 12,
+              padding: '20px',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: 0,
+            }}
+          >
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                color: 'var(--text-muted)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.07em',
+                marginBottom: '14px',
+                flexShrink: 0,
+              }}
+            >
+              Recent Readings
+            </p>
+
+            <div style={{ overflowY: 'auto', flex: 1 }}>
               {data.length === 0 ? (
-                <p className="text-slate-500 text-center mt-10">No records found</p>
+                <p style={{ fontSize: 13, color: 'var(--text-muted)', textAlign: 'center', marginTop: 32, fontStyle: 'italic' }}>
+                  No records yet
+                </p>
               ) : (
-                <table className="w-full text-left text-sm">
-                  <thead className="sticky top-0 bg-slate-900 z-10 text-slate-400">
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                  <thead>
                     <tr>
-                      <th className="pb-3 border-b border-slate-800 font-medium">Time</th>
-                      <th className="pb-3 border-b border-slate-800 font-medium">Lvl</th>
-                      <th className="pb-3 border-b border-slate-800 font-medium">Status</th>
+                      {['Time', 'Level', 'Status'].map((h) => (
+                        <th
+                          key={h}
+                          style={{
+                            position: 'sticky',
+                            top: 0,
+                            background: 'var(--bg-surface)',
+                            textAlign: 'left',
+                            padding: '0 0 10px 0',
+                            fontWeight: 600,
+                            color: 'var(--text-muted)',
+                            letterSpacing: '0.04em',
+                            textTransform: 'uppercase',
+                            fontSize: 10,
+                            borderBottom: '1px solid var(--border)',
+                            zIndex: 1,
+                          }}
+                        >
+                          {h}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/50">
-                    {data.slice(0, 30).map((row, idx) => (
-                      <tr key={idx} className="group hover:bg-slate-800/50 transition-colors">
-                        <td className="py-3 text-slate-400 whitespace-nowrap">
-                          {format(new Date(row.timestamp), 'HH:mm:ss')}
-                        </td>
-                        <td className="py-3 font-semibold text-slate-300">
-                          {row.analogLevel}
-                        </td>
-                        <td className="py-3">
-                          <span className={`px-2 py-0.5 rounded text-xs font-semibold
-                             ${row.noiseLevel === 'Quiet' ? 'bg-emerald-500/10 text-emerald-400' :
-                               row.noiseLevel === 'Moderate' ? 'bg-amber-500/10 text-amber-400' :
-                               row.noiseLevel === 'Loud' ? 'bg-orange-500/10 text-orange-400' :
-                               'bg-red-500/10 text-red-500'
-                             }
-                          `}>
-                            {row.noiseLevel}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
+                  <tbody>
+                    {data.slice(0, 40).map((row, idx) => {
+                      const cfg = getLevelCfg(row.noiseLevel);
+                      return (
+                        <tr
+                          key={idx}
+                          style={{
+                            borderBottom: '1px solid var(--border)',
+                            transition: 'background 0.1s',
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-elevated)')}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                        >
+                          <td style={{ padding: '9px 0', color: 'var(--text-muted)', fontVariantNumeric: 'tabular-nums' }}>
+                            {format(new Date(row.timestamp), 'HH:mm:ss')}
+                          </td>
+                          <td style={{ padding: '9px 0', fontWeight: 600, color: 'var(--text-primary)' }}>
+                            {row.analogLevel}
+                          </td>
+                          <td style={{ padding: '9px 0' }}>
+                            <span
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                background: cfg.bg,
+                                border: `1px solid ${cfg.border}`,
+                                borderRadius: 4,
+                                padding: '2px 7px',
+                                fontSize: 10,
+                                fontWeight: 600,
+                                color: cfg.color,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  width: 4,
+                                  height: 4,
+                                  borderRadius: '50%',
+                                  background: cfg.dot,
+                                  flexShrink: 0,
+                                }}
+                              />
+                              {row.noiseLevel}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               )}
@@ -147,28 +446,47 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Right Column: Map Heatmap */}
-        <div className="lg:col-span-2 h-[800px] lg:h-auto bg-slate-900 border border-slate-800 rounded-2xl p-2 shadow-xl shadow-slate-900/50 relative">
-          <div className="absolute top-6 left-6 z-[1000] bg-slate-900/80 backdrop-blur-md px-4 py-2 border border-slate-700 rounded-xl shadow-lg">
-            <h3 className="font-bold text-slate-200">Noise Heatmap</h3>
-            <p className="text-xs text-slate-400">Live sensor pulse locations</p>
+        {/* Map */}
+        <div
+          style={{
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border)',
+            borderRadius: 12,
+            overflow: 'hidden',
+            position: 'relative',
+            minHeight: '560px',
+          }}
+        >
+          {/* Map overlay label */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 16,
+              left: 16,
+              zIndex: 1000,
+              background: 'rgba(17,19,24,0.92)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid var(--border)',
+              borderRadius: 8,
+              padding: '8px 14px',
+            }}
+          >
+            <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>Noise Heatmap</p>
+            <p style={{ fontSize: 10, color: 'var(--text-muted)' }}>Live sensor pulse locations</p>
           </div>
           <MapComponent data={data} />
         </div>
       </div>
-      
-      {/* Basic Global Styles for map popup tweaking and scrollbar */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .leaflet-container { background: #0f172a !important; }
-        .leaflet-popup-content-wrapper { background: #1e293b; color: #f1f5f9; border-radius: 12px; border: 1px solid #334155; }
-        .leaflet-popup-tip { background: #1e293b; border: 1px solid #334155; }
-        
-        /* Custom scrollbar */
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
-      `}} />
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.6; }
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }
