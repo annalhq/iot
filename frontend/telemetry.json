@@ -1,0 +1,702 @@
+[
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:30:00.214Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:59.174Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:58.092Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:57.061Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:56.011Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:54.955Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:53.925Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:52.885Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:51.833Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:50.787Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:49.740Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:48.684Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:47.638Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:46.589Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:45.532Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:44.487Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:43.434Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:42.396Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:41.278Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:40.241Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:39.181Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:38.137Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:37.101Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:36.071Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:34.969Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:33.930Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:32.863Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:31.796Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:30.742Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:29.699Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:28.627Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:27.581Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:26.529Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:25.492Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:24.447Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:23.406Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:22.340Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:21.285Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:20.198Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:19.154Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:18.115Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:17.051Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:16.014Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:14.974Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:13.909Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:12.861Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:11.813Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:10.765Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:09.725Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:08.680Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:07.631Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:06.573Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:05.537Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:04.496Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:03.354Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:02.317Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:01.259Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:29:00.213Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:59.178Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:58.150Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:57.110Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:56.068Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:55.021Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:53.973Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:52.919Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:51.876Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:50.839Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:49.805Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:48.760Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:47.695Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:46.651Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:45.579Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:44.543Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:43.503Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:42.460Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:41.430Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:40.401Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:39.370Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:38.331Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:37.291Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:36.120Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:35.033Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:33.830Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:32.783Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:31.740Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:30.697Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:29.665Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:28.624Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:27.587Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:26.556Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:25.510Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:24.462Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:23.428Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:22.386Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:21.332Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:20.277Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:19.239Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:18.204Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:17.166Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "analogLevel": 2,
+    "noiseLevel": "Quiet",
+    "timestamp": "2026-04-16T09:28:16.134Z",
+    "lat": 28.6139,
+    "lng": 77.209
+  }
+]
