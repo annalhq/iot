@@ -34,7 +34,7 @@ export default function Sidebar() {
               width: 32,
               height: 32,
               borderRadius: 8,
-              background: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+              background: '#8b5cf6',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -88,7 +88,7 @@ export default function Sidebar() {
                 transition: 'all 0.15s ease',
               }}
             >
-              <Icon size={15} style={{ color: active ? '#3b82f6' : 'inherit', flexShrink: 0 }} />
+              <Icon size={15} style={{ color: active ? '#8b5cf6' : 'inherit', flexShrink: 0 }} />
               {label}
             </Link>
           );

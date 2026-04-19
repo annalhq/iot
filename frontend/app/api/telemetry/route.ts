@@ -15,8 +15,8 @@ export async function POST(req: Request) {
     const newData = {
       ...data,
       timestamp: new Date().toISOString(),
-      lat: 28.6139, 
-      lng: 77.2090  
+      lat: 21.15, 
+      lng: 79.09  
     };
     
     const fileContent = fs.readFileSync(dbPath, 'utf8');

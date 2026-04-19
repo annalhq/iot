@@ -28,7 +28,7 @@ const LEVEL_PALETTE: Record<string, { fill: string; glow: string }> = {
 };
 
 const getPalette = (level: string) =>
-  LEVEL_PALETTE[level.toLowerCase()] ?? { fill: '#3b82f6', glow: 'rgba(59,130,246,0.3)' };
+  LEVEL_PALETTE[level.toLowerCase()] ?? { fill: '#8b5cf6', glow: 'rgba(139,92,246,0.3)' };
 
 function formatTime(ts: string) {
   return new Date(ts).toLocaleTimeString('en-IN', { hour12: false });
